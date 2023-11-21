@@ -1,6 +1,6 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { SignOutButton } from "@clerk/nextjs";
+import { UserButton } from "@clerk/nextjs";
 import React from "react";
 
 const Navbar = () => {
@@ -22,11 +22,12 @@ const Navbar = () => {
       </div>
       {/* brand and search bar end*/}
       {/* login logout start */}
-      <SignOutButton>
-        <button className="px-[1.5rem] py-[0.5rem] text-[white] bg-emerald-500 rounded-2xl">
-          Logout
-        </button>
-      </SignOutButton>
+
+      <UserButton afterSignOutUrl="/" />
+
+      {/* <button className="px-[1.5rem] py-[0.5rem] text-[white] bg-emerald-500 rounded-2xl">
+        <UserButton afterSignOutUrl="/signin" />
+      </button> */}
 
       {/* login logout end */}
     </div>

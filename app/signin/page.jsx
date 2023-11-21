@@ -2,7 +2,7 @@
 
 import { SignIn } from "@clerk/nextjs";
 
-const SignIn = () => {
+const page = () => {
   return (
     <div>
       <SignIn />
@@ -10,4 +10,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default page;
