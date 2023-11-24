@@ -1,9 +1,13 @@
+"use client";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { UserButton } from "@clerk/nextjs";
-import React from "react";
+import { UserButton, useUser } from "@clerk/nextjs";
+import React, { useContext } from "react";
+import { context } from "../context/ContextApi";
 
 const Navbar = () => {
+  const { emailAddresses } = useContext(context);
+
   return (
     <div className="h-full w-full flex justify-between items-center ">
       {/* brand and search bar start*/}
@@ -23,7 +27,12 @@ const Navbar = () => {
       {/* brand and search bar end*/}
       {/* login logout start */}
 
-      <UserButton afterSignOutUrl="/" />
+      <div className="flex justify-center items-center gap-2">
+        <p className="font-bold text-emerald-500">
+          {emailAddresses[0]?.emailAddress}
+        </p>
+        <UserButton afterSignOutUrl="/" />
+      </div>
 
       {/* <button className="px-[1.5rem] py-[0.5rem] text-[white] bg-emerald-500 rounded-2xl">
         <UserButton afterSignOutUrl="/signin" />
