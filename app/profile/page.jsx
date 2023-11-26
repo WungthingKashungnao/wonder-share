@@ -2,9 +2,11 @@
 import { useContext } from "react";
 import { context } from "../(components)/context/ContextApi";
 import Image from "next/image";
+import FormUploadImage from "../(components)/FormUploadImage/FormUploadImage";
 
 const page = () => {
-  const { imageUrl, firstName, lastName } = useContext(context);
+  const { imageUrl, firstName, lastName, toggleImgForm, setToggleImgForm } =
+    useContext(context);
   return (
     <div className="w-full h-full flex-col flex justify-center items-center">
       {/* user profile image start */}
@@ -27,10 +29,17 @@ const page = () => {
         </span>
       </div>
 
-      <button className="bg-emerald-500 text-white px-2 py-1 rounded-lg">
+      <button
+        className="bg-emerald-500 text-white px-2 py-1 rounded-lg"
+        onClick={() => setToggleImgForm(true)}
+      >
         Add Image
       </button>
       {/* user profile image end */}
+
+      {/* form upload image start */}
+      {toggleImgForm && <FormUploadImage />}
+      {/* form image upload end */}
     </div>
   );
 };
