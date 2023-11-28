@@ -1,13 +1,15 @@
 "use client";
 import React, { useContext } from "react";
 import { context } from "../context/ContextApi";
+import axios from "axios";
 
 const FormUploadImage = () => {
   const { imgUrl, setImgUrl, setToggleImgForm } = useContext(context);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(imgUrl);
+    const newImage = await axios.post("/api/user", { imgUrl });
+    console.log(newImage);
   };
   return (
     <>

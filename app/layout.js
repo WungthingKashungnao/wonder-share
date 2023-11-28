@@ -8,7 +8,6 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import Navigator from "./(components)/Navigator/Navigator";
 import ContextApi, { context } from "./(components)/context/ContextApi";
-import FormUploadImage from "./(components)/FormUploadImage/FormUploadImage";
 // Tell Font Awesome to skip adding the CSS automatically
 // since it's already imported above
 config.autoAddCss = false;
