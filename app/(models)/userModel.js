@@ -15,6 +15,9 @@ const UserSchema = new Schema({
   photos: {
     type: [{ url: String }],
   },
+  imageUrl: {
+    type: [String],
+  },
 });
 
 const UserModel = mongoose.models.User || mongoose.model("User", UserSchema);

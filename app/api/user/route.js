@@ -15,6 +15,7 @@ export const POST = async (req) => {
         clerkId: userId,
         email: email,
         photos: { url: imgUrl },
+        imageUrl: imgUrl, //new property added
       });
       await newUser.save();
       // console.log(newUser);
@@ -27,6 +28,7 @@ export const POST = async (req) => {
     if (user) {
       let newPhoto = await UserModel.findOne({ clerkId: userId });
       newPhoto.photos.push({ url: imgUrl });
+      newPhoto.imageUrl.push(imgUrl); //new property added
       await newPhoto.save();
       return NextResponse.json({
         message: "Successfully added new Photo",
@@ -35,15 +37,16 @@ export const POST = async (req) => {
       });
     }
   } catch (error) {
-    console.log(error);
+    return NextResponse.json({ error });
+    // console.log(error);
   }
 };
 
-export const GET = (req) => {
+export const GET = async (req, res) => {
   try {
-    console.log(`Hello from the api mother fucker`);
-    return NextResponse.json({ message: `im from the api` });
+    const allPhotos = await UserModel.find();
+    return NextResponse.json({ allPhotos });
   } catch (error) {
-    console.log(error);
+    return NextResponse.json({ error });
   }
 };

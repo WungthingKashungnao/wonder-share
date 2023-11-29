@@ -10,6 +10,7 @@ const FormUploadImage = () => {
     e.preventDefault();
     const newImage = await axios.post("/api/user", { imgUrl });
     console.log(newImage);
+    setImgUrl("");
   };
   return (
     <>
