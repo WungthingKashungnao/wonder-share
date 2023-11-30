@@ -31,7 +31,7 @@ const Navbar = () => {
         <p className="font-bold text-emerald-500">
           {emailAddresses[0]?.emailAddress}
         </p>
-        <UserButton afterSignOutUrl="/" />
+        <UserButton afterSignOutUrl="/signin" />
       </div>
 
       {/* <button className="px-[1.5rem] py-[0.5rem] text-[white] bg-emerald-500 rounded-2xl">

@@ -1,39 +1,50 @@
 "use client";
-import axios from "axios";
+import { useContext } from "react";
 import Image from "next/image";
-import { useContext, useEffect, useState } from "react";
+import FormUploadImage from "./(components)/FormUploadImage/FormUploadImage";
 import { context } from "./(components)/context/ContextApi";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const getPhotos = async (id) => {
-  const { data } = await axios.get(`http://localhost:3000/api/user/${id}`);
-  return data.userData;
-};
-getPhotos();
-const Home = () => {
-  const [apiData, setApiData] = useState();
-  const { emailAddresses } = useContext(context);
-  const id = emailAddresses[0]?.emailAddress;
-  useEffect(() => {
-    const res = getPhotos(id).then((data) => {
-      setApiData(data);
-    });
-  }, []);
-
-  // console.log(apiData?.imageUrl?.map((val) => val));
-
+const page = () => {
+  const { imageUrl, firstName, lastName, toggleImgForm, setToggleImgForm } =
+    useContext(context);
   return (
-    <div className=" w-full h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 ">
-      {apiData &&
-        apiData?.imageUrl?.map((val, idx) => (
-          // <div key={idx}>{console.log(val.photos.map((val) => val.url))}</div>
-          <div
-            key={idx}
-            className=" border border-emerald-400 relative aspect-square w-[100%]  sm:w-auto  sm:aspect-auto  "
-          >
-            <Image src={val} fill alt="user image" className="object-cover" />
-          </div>
-        ))}
+    <div className="w-full h-full flex-col flex justify-center items-center">
+      {/* user profile image start */}
+      <div className="h-[300px] w-[300px] rounded-full overflow-hidden border border-emerald-600 ">
+        <Image
+          src={imageUrl}
+          width={500}
+          height={500}
+          // fill
+          alt="uer image"
+          className="object-cover "
+        />
+      </div>
+      <div>
+        <span className="text-emerald-500 font-bold text-[2rem]">
+          {firstName}{" "}
+        </span>
+        <span className="text-emerald-500 font-bold text-[2rem]">
+          {lastName}
+        </span>
+      </div>
+
+      <button
+        className="bg-emerald-500 text-white px-2 py-1 rounded-lg"
+        onClick={() => setToggleImgForm(true)}
+      >
+        Add Image
+      </button>
+      {/* user profile image end */}
+
+      {/* form upload image start */}
+      {toggleImgForm && <FormUploadImage />}
+      {/* form image upload end */}
+      <ToastContainer />
     </div>
   );
 };
-export default Home;
+
+export default page;

@@ -2,6 +2,7 @@
 import React, { useContext } from "react";
 import { context } from "../context/ContextApi";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const FormUploadImage = () => {
   const { imgUrl, setImgUrl, setToggleImgForm } = useContext(context);
@@ -11,6 +12,16 @@ const FormUploadImage = () => {
     const newImage = await axios.post("/api/user", { imgUrl });
     console.log(newImage);
     setImgUrl("");
+    toast("🦄 Wow so easy!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
   return (
     <>
