@@ -15,14 +15,14 @@ const Navbar = () => {
         <h1 className="font-bold text-emerald-500 text-[1.5rem]">
           WonderShare
         </h1>
-        <form className="bg-white border-2 border-gray-300 p-1 rounded-xl">
+        {/* <form className="bg-white border-2 border-gray-300 p-1 rounded-xl">
           <FontAwesomeIcon icon={faSearch} className="text-gray-500" />
           <input
             type="text"
             className="outline-none px-2 text-gray-500"
             placeholder="search..."
           />
-        </form>
+        </form> */}
       </div>
       {/* brand and search bar end*/}
       {/* login logout start */}

@@ -22,21 +22,15 @@ const Home = () => {
   // console.log(apiData?.imageUrl?.map((val) => val));
 
   return (
-    <div className=" w-full h-full flex ">
+    <div className=" w-full h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 ">
       {apiData &&
         apiData?.imageUrl?.map((val, idx) => (
           // <div key={idx}>{console.log(val.photos.map((val) => val.url))}</div>
           <div
             key={idx}
-            className="h-[300px] w-[300px] border border-emerald-400 "
+            className=" border border-emerald-400 relative aspect-square w-[100%]  sm:w-auto  sm:aspect-auto  "
           >
-            <Image
-              src={val}
-              width={500}
-              height={500}
-              alt="user image"
-              className="object-cover"
-            />
+            <Image src={val} fill alt="user image" className="object-cover" />
           </div>
         ))}
     </div>
